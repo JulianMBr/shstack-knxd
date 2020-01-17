@@ -1,11 +1,10 @@
 ##
 ## knxd
 ##
-
-MAINTAINER Julian Brenne <julbrenne@gmail.com
-
 ## Use 3.11 Alpine based images as starting point
 FROM alpine:3.11
+
+MAINTAINER Julian Brenne <julbrenne@gmail.com
 
 ## Choose between branches
 ARG BRANCH=v0.14
