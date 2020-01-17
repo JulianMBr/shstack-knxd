@@ -1,20 +1,13 @@
 # knxd
 For documentation and information on the KNXD project [check our their GitHub page](https://github.com/knxd/knxd).
+This is a fork of https://github.com/Foxi352
 
 ## Exposed ports
-***I still don't know why, but instead of binding ports use --net=host to get it working.***
-* 3672/tcp (Server port)
-* 6720/tcp (knx-ip)
+* 3672/tcp (Server)
+* 6720/tcp (KNX-IP)
 
-## Exported volumes
+## Exported files
 * /etc/knxd (for knxd.ini file)
 
-## Example container start command
-As default the image starts `knxd` as an entrypoint and passes `/etc/knxd/knxd.ini` as command. If you want to run the image on it's own you have multiple choices to pass parameters to the knx daemon. Some are:
 
-* Map `/etc/knxd` to a local volume of your host and put a `knxd.ini` inside
-* Pass command line parameters to image as you would pass to the deamon directly. Example `docker run knxd --version`
 
-Example to run the image standalone with a provided ini file in `./knxd/etc/knxd.ini`:
-
-	docker run -d --net=host -v ./knxd/etc:/etc/knxd foxi352/knxd
