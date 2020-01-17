@@ -1,4 +1,6 @@
 # knxd
+[![Build Status](https://travis-ci.org/s1x/shstack-knxd.svg?branch=master)](https://travis-ci.org/s1x/shstack-knxd)
+
 For documentation and information on the KNXD project [check our their GitHub page](https://github.com/knxd/knxd).
 This is a fork of https://github.com/Foxi352 but with a stable alpine version.
 
