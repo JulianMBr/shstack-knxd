@@ -23,7 +23,7 @@ RUN apk add --no-cache build-base gcc abuild binutils binutils-doc gcc-doc git l
     && chmod a+x /entrypoint.sh \
     && apk del --no-cache build-base abuild binutils binutils-doc gcc-doc git automake autoconf libtool argp-standalone cmake cmake-doc dev86
 
-RUN rm tools/test.sh
+RUN rm /usr/local/src/tools/test.sh
 
 COPY knxd.ini /root
 COPY knxd.ini /etc/knxd
