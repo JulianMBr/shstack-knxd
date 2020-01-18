@@ -15,7 +15,7 @@ jobs:
           if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
             docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" --password-stdin
             docker images
-            docker tag shstack-knxd $DOCKER_USERNAME/shstack-knxd
+            docker tag s1x/shstack-knxd $DOCKER_USERNAME/shstack-knxd
             docker push $DOCKER_USERNAME/shstack-knxd
           fi
     - stage: test
