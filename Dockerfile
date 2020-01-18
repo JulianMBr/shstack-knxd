@@ -22,7 +22,7 @@ RUN apk add --no-cache build-base gcc abuild binutils binutils-doc gcc-doc git l
     && adduser -D -S -s /sbin/nologin -G knxd knxd \
     && chmod a+x /entrypoint.sh \
     && apk del --no-cache build-base abuild binutils binutils-doc gcc-doc git automake autoconf libtool argp-standalone cmake cmake-doc dev86
-    
+
 COPY knxd.ini /root
 COPY knxd.ini /etc/knxd
 
