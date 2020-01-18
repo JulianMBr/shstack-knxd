@@ -11,8 +11,8 @@ script:
   - >
     if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      TAG=$(docker run s1x/shstack-knxd knxd --version | head -n 1 | cut -d ' ' -f 2 | cut -d ':' -f 1)
-      docker tag s1x/shstack-knxd s1x/shstack-knxd:$TAG
-      docker push s1x/shstack-knxd:$TAG
-      docker push s1x/shstack-knxd
+      TAG=$(docker run malokas/shstack-knxd knxd --version | head -n 1 | cut -d ' ' -f 2 | cut -d ':' -f 1)
+      docker tag malokas/shstack-knxd malokas/shstack-knxd:$TAG
+      docker push malokas/shstack-knxd:$TAG
+      docker push malokas/shstack-knxd
     fi
