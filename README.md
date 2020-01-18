@@ -13,4 +13,11 @@ This is a fork of https://github.com/Foxi352 but with a stable alpine version.
 * /etc/knxd (for knxd.ini file)
 
 
+## ToDo
+Tag docker file with knxd version
 
+```
+    TAG=$(docker run fdubuisson/knxd-rpi knxd --version | head -n 1 | cut -d ' ' -f 2 | cut -d ':' -f 1)
+    docker tag fdubuisson/knxd-rpi fdubuisson/knxd-rpi:$TAG
+    docker push fdubuisson/knxd-rpi:$TAG
+```
