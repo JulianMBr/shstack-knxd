@@ -11,5 +11,6 @@ script:
   - >
     if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+      docker tag malokas/shstack-knxd malokas/shstack-knxd
       docker push malokas/shstack-knxd:latest
     fi
