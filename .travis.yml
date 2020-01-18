@@ -2,15 +2,21 @@ services:
   - docker
 os: linux
 language: shell
-script:
-  # prepare qemu
-  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
-  # build image
-  - docker build -t s1x/shstack-knxd .
-  # push image
-  - >
-    if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
-      docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      docker tag malokas/shstack-knxd malokas/shstack-knxd
-      docker push malokas/shstack-knxd:latest
-    fi
+jobs:
+  include:
+    - stage: build docker image
+      script:
+        # prepare qemu
+        - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+        # build image
+        - docker build -t s1x/shstack-knxd .
+        # push image
+        - >
+          if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
+            docker login -u="$DOCKER_USER" -p="$DOCKER_PASS" --password-stdin
+            docker images
+            docker tag shstack-knxd $DOCKER_USERNAME/shstack-knxd
+            docker push $DOCKER_USERNAME/shstack-knxd
+          fi
+    - stage: test
+      script: docker run --rm $DOCKER_USERNAME/shstack-knxd knxd --version
