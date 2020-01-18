@@ -18,4 +18,4 @@ jobs:
             docker push $DOCKER_USER/shstack-knxd
           fi
     - stage: test
-      script: docker run --rm $DOCKER_USERNAME/shstack-knxd knxd --version
+      script: docker run --rm $DOCKER_USER/shstack-knxd knxd --version
