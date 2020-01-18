@@ -17,5 +17,3 @@ jobs:
             docker tag s1x/shstack-knxd $DOCKER_USER/shstack-knxd
             docker push $DOCKER_USER/shstack-knxd
           fi
-    - stage: test
-      script: docker run --rm $DOCKER_USER/shstack-knxd knxd --version
