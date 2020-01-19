@@ -14,6 +14,10 @@ jobs:
             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
             docker build -t s1x/shstack-knxd .
             docker images
-            docker tag s1x/shstack-knxd:latest "$DOCKER_USER"/shstack-knxd:latest
-            docker push "$DOCKER_USER"/shstack-knxd:latest
+            ## TAGS
+            echo "About to tag remote image '$DOCKER_USER'/shstack-knxd:latest'"
+            docker tag s1x/shstack-knxd $DOCKER_USER/shstack-knxd:latest
+            ## PUSH
+            echo "About to push remote image '$DOCKER_USER'/shstack-knxd:latest'"
+            docker push $DOCKER_USER/shstack-knxd:latest
           fi
