@@ -2,6 +2,9 @@ services:
   - docker
 os: linux
 language: shell
+env:
+  global:
+    - DOCKER_REGISTRY="malokas"
 jobs:
   include:
     - stage: build docker image
@@ -11,13 +14,16 @@ jobs:
         # push image
         - >
           if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then
-            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-            docker build -t s1x/shstack-knxd .
-            docker images
-            ## TAGS
-            echo "About to tag remote image '$DOCKER_USER'/shstack-knxd:latest'"
-            docker tag s1x/shstack-knxd $DOCKER_USER/shstack-knxd:latest
-            ## PUSH
-            echo "About to push remote image '$DOCKER_USER'/shstack-knxd:latest'"
-            docker push $DOCKER_USER/shstack-knxd:latest
+            if [[ -n "$DOCKER_PASS" && -n "$DOCKER_USER" && -n "$DOCKER_REGISTRY" ]]; then
+              echo "Deploying docker image to $DOCKER_REGISTRY"
+              echo "$DOCKER_PASS" | docker login --password-stdin --username "$DOCKER_USER" "$DOCKER_REGISTRY"
+              docker build -t s1x/shstack-knxd .
+              docker images
+              ## TAGS
+              echo "About to tag remote image '$DOCKER_USER'/shstack-knxd:latest'"
+              docker tag s1x/shstack-knxd $DOCKER_USER/shstack-knxd:latest
+              ## PUSH
+              echo "About to push remote image '$DOCKER_REGISTRY'/shstack-knxd:latest'"
+              docker push $DOCKER_REGISTRY/shstack-knxd:latest
+            fi
           fi
