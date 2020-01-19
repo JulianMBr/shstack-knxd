@@ -20,8 +20,8 @@ jobs:
               docker build -t s1x/shstack-knxd .
               docker images
               ## TAGS
-              echo "About to tag remote image '$DOCKER_USER'/shstack-knxd:latest'"
-              docker tag s1x/shstack-knxd $DOCKER_USER/shstack-knxd:latest
+              echo "About to tag remote image '$DOCKER_REGISTRY'/shstack-knxd:latest'"
+              docker tag s1x/shstack-knxd $DOCKER_REGISTRY/shstack-knxd:latest
               ## PUSH
               echo "About to push remote image '$DOCKER_REGISTRY'/shstack-knxd:latest'"
               docker push $DOCKER_REGISTRY/shstack-knxd:latest
