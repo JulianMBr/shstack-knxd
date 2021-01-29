@@ -2,7 +2,7 @@
 ## knxd
 ##
 ## Use 3.11 Alpine based images as starting point
-FROM alpine:3.11
+FROM alpine:3.13.1
 
 MAINTAINER Julian Brenne <julbrenne@gmail.com
 
